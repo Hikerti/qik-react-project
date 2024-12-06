@@ -3,15 +3,14 @@ import style from './FormCreate.module.css'
 import InputPost from '../Inputs/InputPost'
 import ButtonPost from '../Button/ButtonPost'
 
-function FormCreate(props) {
-    const [title, setTitle] = useState('')
-    const bodyInput = useRef()
+function FormCreate({ setPosts, posts }) {
+    const [post, setPost] = useState({title: '', body: ''});
 
     const addNewPost = (e) => {
         e.preventDefault();
-        console.log(title)
-        console.log(bodyInput.current.value)
-    }
+        setPosts([...posts, {...post}]);
+        setPost({title: '', body: ''})
+    };
 
   return (
     <form 
@@ -19,13 +18,14 @@ function FormCreate(props) {
         onSubmit={addNewPost}
     >
         <InputPost
-            value={title}
-            onChange={e => setTitle(e.target.value)}
+            value={post.title}
+            onChange={e => setPost({...post, title: e.target.value})}
             type="text"
             placeholder="Введите название поста"
         />
         <InputPost 
-            ref={bodyInput}
+            value={post.body}
+            onChange={e => setPost({...post, body: e.target.value})}
             type="text" 
             placeholder="Введите содержимое поста"
         />

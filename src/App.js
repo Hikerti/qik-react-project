@@ -16,7 +16,7 @@ function App() {
 
   return (   
     <div className="App">
-    <FormCreate/>
+    <FormCreate posts={posts} setPosts={setPosts}/>
     <PostList posts={posts} title={'Список 1'}/>
     </div>
   );

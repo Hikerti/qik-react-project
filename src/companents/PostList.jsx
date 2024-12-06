@@ -7,8 +7,8 @@ function PostList({posts, title}) {
       <h1 style={{color: 'red'}}>
         {title}
       </h1>
-      { posts.map(post =>
-        <List post = {post}/>
+      { posts.map((post, index) =>
+        <List number = {index + 1} post = {post}/>
       )}
     </div>
   )
